@@ -1,120 +1,124 @@
+
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Telerik Report Viewer Demo</title>
-    
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-        <link href="https://kendo.cdn.telerik.com/2020.1.114/styles/kendo.common.min.css" rel="stylesheet" id="common-css" />
-        <link href="https://kendo.cdn.telerik.com/2020.1.114/styles/kendo.blueopal.min.css" rel="stylesheet" id="skin-css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Telerik HTML5 Report Viewer Demo 55</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://kendo.cdn.telerik.com/2020.1.114/styles/kendo.common.min.css" rel="stylesheet" id="common-css" />
+    <link href="https://kendo.cdn.telerik.com/2020.1.114/styles/kendo.blueopal.min.css" rel="stylesheet" id="skin-css" />
+    <script src="http://localhost:5000/Scripts/themeSwitcher.js"></script>
+    <script src="http://localhost:5000/api/reports/resources/js/telerikReportViewer"></script>
 
-        <script src="http://localhost:5000/Scripts/themeSwitcher.js"></script>
-        <script src="http://localhost:5000/api/reports/resources/js/telerikReportViewer"></script>
-    
-        <style>
-            body {
-                font-family: Verdana, Arial, sans-serif;
-                margin: 5px;
-            }
-            #reportViewer1 {
-                position: absolute;
-                left: 5px;
-                right: 5px;
-                bottom: 5px;
-                top:75px;   
-                overflow: hidden;
-                clear: both;
-            }
-            #theme-switcher {
-                float: right;
-            }
+    <style>
+        body {
+            font-family: Verdana, Arial, sans-serif;
+            margin: 5px;
+        }
 
-            .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-background-color: gray;
-}
-        </style>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">  <p th:text="'Telerik Sample Report for ' + ${name} + '!'" /></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                  </li>
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success me-3" type="submit">Search</button>
-                  <select id="theme-switcher" class="btn btn-secondary"></select>
-                </form>
-              </div>
-            </div>
-          </nav>
-<div class="container">
+        #reportViewer1 {
+            position: absolute;
+            left: 5px;
+            right: 5px;
+            top: 40px;
+            bottom: 5px;
+            overflow: hidden;
+            clear: both;
+        }
+
+        #theme-switcher {
+            float: right;
+            width: 12em;
+            height: 30px;
+        }
+
+
+      /*  .trv-parameters-area.preview .trv-parameters-area-footer {
+            top: 0;
+        }
+
+        .trv-report-viewer .trv-parameters-area.preview .trv-parameters-area-content {
+            top: 3em;
+            bottom: 0;
+        }*/
+    
+    </style>
+</head>
+<body>
+    <!--<select id="theme-switcher"></select>-->
+    <h1> <p th:text="'Hello, ' + ${name} + '!'" /></h1>
     <div id="reportViewer1">
         loading...
     </div>
 
-</div>
-        <div class="container-fluid footer bg-dark">
-            <footer class="navbar-fixed-bottom">
-                <div class="container">
-                  <span class="text-muted">GTM Catalyst</span>
-                </div>
-              </footer>
-        </div>
-    
-      
-        <script type="text/javascript">
-            $(document).ready(function () {
-                //Theme switcher
-                themeSwitcher(
-                    '#theme-switcher',
-                    '#common-css',
-                    '#skin-css');
-                $("#reportViewer1")
-                    .telerik_ReportViewer({
-                            serviceUrl: "http://localhost:5000/api/reports",
-                            reportSource: {
-                            report: "accountsdash",
-                        },
-                        viewMode: telerikReportViewer.ViewModes.PRINT_PREVIEW,
-                        scaleMode: telerikReportViewer.ScaleModes.SPECIFIC,
-                        scale: 1.0,
-                        enableAccessibility: true,
-                        sendEmail: { enabled: true }
-                    });
-            });
-        </script>
-    </body>
-    </html>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //Theme switcher
+            themeSwitcher(
+                '#theme-switcher',
+                '#common-css',
+                '#skin-css');
+
+            $("#reportViewer1")
+                .telerik_ReportViewer({
+
+                    // The URL of the service which will serve reports.
+                    // The URL corresponds to the name of the controller class (ReportsController).
+                    // For more information on how to configure the service please check http://www.telerik.com/help/reporting/telerik-reporting-rest-conception.html.
+                    serviceUrl: "http://localhost:5000/api/reports/",
+
+                    // The URL for the report viewer template. The template can be edited -
+                    // new functionalities can be added and unneeded ones can be removed.
+                    // For more information please check http://www.telerik.com/help/reporting/html5-report-viewer-templates.html.
+                    //
+                    //templateUrl: 'telerikReportViewerTemplate-14.2.20.1021.html',
+                    //ReportSource - report description
+                    reportSource: {
+
+                        // The report can be set to a report file name (.trdx or .trdp report definition)
+                        // or CLR type name (report class definition). 
+                        report: "accountsdash",
+
+                        // Parameters name value dictionary
+                       //parameters: {'year':2001}
+                    },
+                    parametersAreaPosition: 'LEFT',
+                    searchMetadataOnDemand: true,
+                    parameters: {
+                        editors: {
+                            singleSelect: telerikReportViewer.ParameterEditorTypes.COMBO_BOX,
+                            multiSelect: telerikReportViewer.ParameterEditorTypes.COMBO_BOX,
+                            
+                            
+                        }
+                    },
+
+                    // Specifies whether the viewer is in interactive or print preview mode.
+                    // PRINT_PREVIEW - Displays the paginated report as if it is printed on paper. Interactivity is not enabled.
+                    // INTERACTIVE - Displays the report in its original width and height without paging. Additionally interactivity is enabled.
+                    viewMode: telerikReportViewer.ViewModes.PRINT_PREVIEW,
+
+                    // Sets the scale mode of the viewer.
+                    // Three modes exist currently:
+                    // FIT_PAGE - The whole report will fit on the page (will zoom in or out), regardless of its width and height.
+                    // FIT_PAGE_WIDTH - The report will be zoomed in or out so that the width of the screen and the width of the report match.
+                    // SPECIFIC - Uses the scale to zoom in and out the report.
+                    scaleMode: telerikReportViewer.ScaleModes.SPECIFIC,
+
+                    // Zoom in and out the report using the scale
+                    // 1.0 is equal to 100%, i.e. the original size of the report
+                    scale: 1.0,
+
+                    //Enables or disables the accessibility features of the report viewer and its contents.
+                    enableAccessibility: false,
+
+                    //If set to true shows the Send Mail Message toolbar button
+                    sendEmail: { enabled: true }
+                });
+        });
+    </script>
+
+</body>
+</html>
